@@ -13,7 +13,7 @@ https://hellokoding.com/registration-and-login-example-with-spring-security-spri
 - Spring Data JPA
 - Maven
 - JSP
-- HSQL
+- Postgresql
 
 ## Run
 ```mvn clean spring-boot:run```
