@@ -1,9 +1,15 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.User;
+import com.hellokoding.auth.model.UserInfo;
+
+import java.util.List;
 
 public interface UserService {
-    void save(User user);
+    void save(UserInfo userInfo);
 
-    User findByUsername(String username);
+    UserInfo findByUsername(String username);
+
+    List<UserInfo> userList();
+
+    void delUser(long id);
 }

@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create an account</title>
+    <title>Page</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -31,13 +31,13 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        <h2><font color="red"> Page one</font> ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
     </c:if>
-    <form action="/first">
-      <h4> <input class=" btn btn-outline-primary btn-sm" type="submit" value="Page one"></h4>
+    <form action="/second">
+       <h4><input class=" btn btn-outline-primary btn-sm" type="submit" value="Page 2"></h4>
     </form>
     <form action="/users">
-       <h4><font color="red"><input class=" btn btn-outline-primary btn-sm" type="submit" value="Page only for ADMIN"></font></h4>
+        <h4><font color="red"><input class=" btn btn-outline-primary btn-sm" type="submit" value="Page only for ADMIN"></font></h4>
     </form>
 </div>
 <!-- /container -->

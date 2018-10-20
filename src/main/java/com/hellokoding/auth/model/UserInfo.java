@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "user_info")
+public class UserInfo {
     private Long id;
     private String username;
     private String password;
+    private String userRole;
     private String passwordConfirm;
     private Set<Role> roles;
 
@@ -36,6 +37,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Transient
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     @Transient

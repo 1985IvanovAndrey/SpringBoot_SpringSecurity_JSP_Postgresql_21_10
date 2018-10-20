@@ -1,6 +1,6 @@
 package com.hellokoding.auth.validator;
 
-import com.hellokoding.auth.model.User;
+import com.hellokoding.auth.model.UserInfo;
 import com.hellokoding.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,27 +15,27 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return User.class.equals(aClass);
+        return UserInfo.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        User user = (User) o;
+        UserInfo userInfo = (UserInfo) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-        if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
+        if (userInfo.getUsername().length() < 6 || userInfo.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
         }
-        if (userService.findByUsername(user.getUsername()) != null) {
+        if (userService.findByUsername(userInfo.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
+        if (userInfo.getPassword().length() < 8 || userInfo.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 
-        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+        if (!userInfo.getPasswordConfirm().equals(userInfo.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
     }
